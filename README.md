@@ -36,4 +36,3 @@
 -   [ ] Matlab
 -   [ ] Other
 
-#### ollowing tools are they currently using (rstudio, rmd, latex, overleaf, etc.)"
