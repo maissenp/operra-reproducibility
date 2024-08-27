@@ -11,7 +11,6 @@
 ## Onboarding questionnaire
 
 ### Which of the following concepts are you familiar with?
-
 *Multiple responses are possible*
 
 -   [ ] R
@@ -29,8 +28,7 @@
 -   [ ] Intermediate: I can write my own scripts or modify substantially existing scripts
 -   [ ] Advanced: I write scripts from scratch with interdependent functions in one or more languages
 
-## What of these programming languages do you use?
-
+### What of these programming languages do you use?
 *Multiple responses are possible*
 
 -   [ ] R
