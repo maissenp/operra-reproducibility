@@ -15,10 +15,14 @@ author:
   - name: Gorka Fraga Gonzalez
     affiliation: Center for Reproducible Science
 editor: visual
+preview-links: true
 format: 
   revealjs: 
     theme: simple
     embed-resources: true 
+    progress: true
+    slide-number: true
+    footer:   <a href="https://crsuzh.pages.uzh.ch/Workshop_Quarto_2024_UNIGE" target="_blank"> ⏎ home </a>
 ---
 
 ## Quarto

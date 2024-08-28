@@ -39,6 +39,6 @@
     "href": "contents/slides/index.html#code",
     "title": "Dynamic reporting with Quarto",
     "section": "Code",
-    "text": "Code\nWhen you click the Render button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n\n[1] 2"
+    "text": "Code\nWhen you click the Render button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:\n\n\n[1] 2\n\n\n\n\n\n ⏎ home"
   }
 ]
