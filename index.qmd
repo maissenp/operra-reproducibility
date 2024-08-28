@@ -1,8 +1,7 @@
 ---
-title: Dynamic reporting with Quarto ... 
+title: Dynamic reporting with Quarto 
 subtitle: Workshop at UNIGE 
 sidebar: false
-image: "assets/narrow_alps.png"
 date: last-modified
 author: 
   - name: 'Gorka Fraga Gonzalez'
@@ -34,7 +33,8 @@ listing:
   type: grid
   id: main-listing
   fields: [title, image]
-  #grid-columns: 1
+  image-height: 210px
+  #grid-columns: 3
   #grid-item-align: center
   #sort-ui: true
   #filter-ui: true
@@ -46,9 +46,14 @@ listing:
     
 toc: false
 page-layout: full
-
 ---
 
-Welcome to the workshop on Dynamic reporting with Quarto 
+Welcome to the workshop on Dynamic reporting with Quarto
 
 
+ 
+::: {#main-listing}
+:::
+
+
+ 

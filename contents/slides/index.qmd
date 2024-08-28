@@ -2,6 +2,8 @@
 title: "Dynamic reporting with Quarto"
 subtitle: A workshop by the Center for Reproducible Science
 date:  "November 07, 2024"
+image:  Infographic_dynamic_reporting.jpg
+image-height: 10px
 title-slide-attributes:
   data-background-image: narrow_alps.png
   data-background-size: contain
