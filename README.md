@@ -55,7 +55,9 @@ WebURL : [https://crsuzh.pages.uzh.ch/Workshop_Quarto_2024_UNIGE ](https://crsuz
 ________________
 
 # Resources
-(...add refs here) 
+- CRS primer: [Dynamic Reporting](https://zenodo.org/records/8354360)
+
+
 
 
  
