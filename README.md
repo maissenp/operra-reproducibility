@@ -8,31 +8,49 @@ WebURL : [https://crsuzh.pages.uzh.ch/Workshop_Quarto_2024_UNIGE ](https://crsuz
 
 
 # Contents
-### Part 1 - Theory
-#### Dynamic reporting and literate programming 
--  What it is and why it matters for reproducibility 
+### Part 1 - Theory (50 min)
+#### Motivation: reproducible data analysis workflow
+#### The 'literate programming' paradigm and dynamic reporting
+#### Components
 -  Quick of overview of R markdown, Quarto, Jupyter notebooks 
--  Software glossary simplified: markup languages (markdown, latex, html) and document conversion (knitr, pandoc), executable code (software environment/containers, HTML widgets vs dashboards vs shiny apps, static vs dynamic sites),  IDEs (Rstudio, VS code)
--  Git repositories (intro)
+-  Software glossary simplified: markup languages (markdown, latex, html) and document conversion (knitr, pandoc), IDEs (Rstudio, VS code, Jupyter)
+
 #### Workflow and components
--  Content files: .QMD, .MD and .RMD files 
--  Project file: _quarto.yml 
+-  The Quarto markdown file: .QMD (also .MD and .RMD files) 
 -  Render action
--  Teaser for advanced users: multiple outputs and parameterised reports 
+-  Advanced: project _quarto.yml 
+ 
+### Part 2 - Hands on (90 min)
+#### Set up and installation 
+-  Q&A 
+#### Rendering an example report
+-  In R studio 
+-  The YAML header
+-  Text layout (source vs visual editor in R studio )
+-  Code chunks (delimiter, chunk options)
+-  Figures, captions and tables
+-  Use inline code in the text layout
+- References: Zotero integration
+- Manuscript and journal templates
+- Challenges in collaborative editing
+- Comparison with R markdown 
 
-### Part 2 - Practical Examples
-#### Using Quarto to generate the 'Results' section of a manuscript 
--  Sharing in PDF vs HTML 
--  Integrating with full manuscript: collaborative editing
-#### Using Quarto to display your data and analysis in a webpage
--  Bring together multiple HTMLs with Quarto website
--  Gitlab pages, Github pages 
+#### Outlook: 
+- Special text attributes (tabs, callouts)
+- Parameterized reports
+- Interactivity in HTMLs (e.g., plotly, DT tables, htmlwidgets, Shiny apps )
+- Multiple outputs (slides, websites, word) 
 
-### Part 3 - Workflows for dissemination and publication
+### Part 3 - Data sharing workflows for dissemination and publication
 - 'Persistent' identification: DOI (Zenodo and OSF)
--  Repository snapshots (Gitlab releases) 
--  Quarto websites + Gitlab pages 
+-  A Zenodo workflow example 
+-  What to include in the Zenodo or OSF entries? 
+- Repository snapshots (Gitlab releases) 
 
+### 4.  Outlook
+- Sharing source code in Git repositories
+- Sharing software dependencies (e.g., sessionInfo) and environment (docker containers)
+- Q&A 
 
 ________________
 
