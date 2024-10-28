@@ -1,17 +1,9 @@
 ---
-title: 'Instructions' 
-listing:
-  categories: true
-  type: table
-  table-hover: true
-  id: main-listing
-  fields: [title]
-  sort-ui: true
-  filter-ui: true
+title: 'Installation instructions' 
+author: 'Fabio Molo'
+
 
 ---
-
-# Installation
 
 To follow along in the hands-on part of the workshop, please install ```Quarto``` on your computer.  
 
@@ -30,6 +22,6 @@ Additional instructions, if necessary, can be found here: <https://quarto.org/do
 
 ## Stand-alone installation
 
-General instructions how to install ```Quarto``` independently of R RStudio can be found at [https://quarto.org/docs/get-started/]. In the course we will mostly use R and RStudio for demonstration, but ```Quarto``` can also be used with python instead of R and with VS Code, Jupyter Notebooks or other development environments instead of RStudio. If this is of interest to you, the following page is a good starting point: <https://quarto.org/docs/get-started/hello/vscode.html>
+General instructions how to install ```Quarto``` independently of R RStudio can be found at <https://quarto.org/docs/get-started/>. In the course we will mostly use R and RStudio for demonstration, but ```Quarto``` can also be used with python instead of R and with VS Code, Jupyter Notebooks or other development environments instead of RStudio. If this is of interest to you, the following page is a good starting point: <https://quarto.org/docs/get-started/hello/vscode.html>
 
 Please also make sure to have a working version of LaTeX installed (as above). 
