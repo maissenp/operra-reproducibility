@@ -15,6 +15,7 @@ To render documents in PDF format, ```Quarto``` needs to be able to access ```La
 
 ````
 quarto install tinytex
+
 ````
 
 Additional instructions, if necessary, can be found here: <https://quarto.org/docs/output-formats/pdf-basics.html>
