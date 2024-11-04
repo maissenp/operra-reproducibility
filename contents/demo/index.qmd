@@ -1,4 +1,5 @@
 ---
+title: Demo 
 #listing:
  # categories: true
 #  type: table
@@ -9,10 +10,198 @@
   #contents: *.qmd
 format:
   html:
+    output-file: 'xxxx'
     toc-depth: 4
+  pdf: default
+  #revealjs: default
+execute: 
+  eval: true
+
 ---
 
-# Demo {.unnumbered}
+This demo requires R and Quarto Visit the [instructions](../instructions/index.qmd) page to get ready.
 
-This is the demo page  (... coming soon ...)
+# Demo I - Create your own report
 
+## 1. Install additional dependencies and packages
+
+[Run the code below in the **R console** (it may take a couple of minutes)]{style="color: red;"}
+
+``` r
+ 
+# Install packages 
+install.packages(c('quarto', 'dplyr', 'ggplot2','kableExtra'))
+```
+
+## 2. Start a new Quarto document
+
+### Start a new QMD file
+
+-   In the Rstudio menu, go to `File > New File > Quarto document`.
+-   Keep the default options, fill in the filename text box
+-   **Save** the file with a filename ending `.qmd` in the project home directory (visible on the bottom right pane).
+-   Switch between the `visual` and `source` **tabs** of the R studio visual editor
+-   Edit the code in the **source** tab.
+
+### Edit the YAML header
+
+Edit the YAML header delimited by (`---`). Add information about `author`, `affiliation` and `date` (use `last-modified` to always display the latest date) and define the output format as `pdf` or `html`. Beware of the *text indentation*! The header can be kept simple or it can contain a lot of information. An example:
+
+``` yaml
+---
+title: 'Title of the report or page'
+subtitle: 'Subtitle'
+date: last-modified # Display the date of the last edit
+author: 
+  - name: 'Author 1 name'
+    orcid: 1234-1234-1234-12345
+    affiliations:
+      - name: 'Institute, Faculty names'
+
+  - name: 'Author 1 name'
+    orcid: 1234-1234-1234-12345
+    affiliations:
+      - name: 'Institute, Faculty names'
+format:
+  html:
+    toc: true
+    toc-depth: 4
+---
+```
+
+## 3. Create the report content
+
+### Code chunks
+
+The following [code chunks](https:/quarto.org/docs/computations/r.html) have executable code to perform different actions on the data
+
+::: {#tip-chunks .callout-tip collapse="false"}
+#### Code execution options
+
+The code chunks are delimited by ```` ```{r} ```` (you can specify other languages like Python, Julia, ObservableJS). For each code you can add *execution options* to the code chunks with `#|`, for example `#| echo: false` will not display the code. In Rstudio you can see the options available if you type `#|` and then press the TAB ⭾ key on your keyboard . These options can be set globally for the entire document on the YAML header (under `execution:`).
+:::
+
+#### Load libraries
+
+Let us first load all necessary libraries. [Copy the code below inside a 'code chunk']{style="color: red;"}
+
+```{r}
+#| warning: false
+#| output: false
+
+# Load libraries
+lapply(c('quarto', 'dplyr', 'ggplot2','kableExtra'), library, character.only = TRUE)
+
+```
+
+#### Read the data
+
+For this example we will use the data set 'Funding and Research Output Data' <https://zenodo.org/records/5011201>. The dataset is a table (CSV) with longitudinal data related to research outputs of researchers. Each researcher is identified with the variable `anonym_id` and there are multiple rows per researcher (*long format*).
+
+We can read the table into a variable named *tbl* with the following code :
+
+
+```{r}
+
+url <- 'https://zenodo.org/records/5011201/files/anonymised_funding_output_data.csv?download=1'
+tbl <- read.csv(url, row.names = 1)
+```
+
+#### Summary of the data
+
+The data is longitudinal, we will summarize the cumulative sum of `n_articles_per_year` and `n_preprints_per_year` per researcher ( `anonym_id`).
+
+
+```{r}
+
+data_summary <- summarise(
+                group_by(tbl, anonym_id),
+                total_articles = sum(n_articles_per_year, na.rm = TRUE),
+                total_preprints = sum(n_preprints_per_year, na.rm = TRUE)
+           )
+```
+
+#### Table
+
+We can render a table summarizing the data. For example:
+
+
+```{r}
+#| warning: true
+#kableExtra::kable(head(tbl),format = "markdown")
+kable(summary(data_summary)[,2:3], 
+      caption = paste0('Summary of table with ', nrow(data_summary), ' rows'),
+      booktabs =T) %>% kable_styling(latex_options=c("striped"))
+
+```
+
+#### Plot
+
+We can add a code chunk a plot how the number of preprints developed over time.
+
+
+```{r}
+
+preprints <- summarise(
+  group_by(tbl, year),
+  n_preprints = sum(n_preprints_per_year)
+  )
+
+ggplot(preprints, aes(x= year, y = n_preprints)) + 
+  geom_point(shape=21, fill = "blue") +
+  theme_minimal()
+```
+
+ 
+### Inline code
+
+Now we can use this data_summary and [inline code](https://quarto.org/docs/computations/inline-code.html) to add a text describing the data using code to read some information from the table.
+
+[Use code snippets such as those below in your Markdown text to describe the data]{style="color: red;"}
+
+Total number of researchers: \``` r count(data_summary)` ``
+
+Maximum number of publications: \``` r max(data_summary$total_articles)` ``
+
+Median number of publications: \``` r median(data_summary$total_preprints)` ``
+
+## 4. Render the report
+
+Now that you edit the QMD file with your report:
+
+- [ ]  Check that the YAML header, the text and the code chunks are well delimited and you did not forget, for example, to close any chunk with (\`\`\`).
+- [ ]   Click on the button `Render` with the blue arrow on top of the editor in R studio.
+- [ ]   A  file with the same name as your .qmd file and the format specified in your header should have been created. 
+
+
+
+## 5. Refine the report 
+Try to explore different options for code execution: 
+
+-   [ ] Hide all
+-   [ ] Print all code but do not execute it 
+-   [ ] Fold all code (accessible by clicking on a button when saved an HTML) 
+-   [ ] Hide the code reading the table, show the rest
+-   [ ] **Challenge** render the report as both an HTML document and as PDF 
+
+{{< pagebreak >}}
+
+# Demo II - Explore other examples
+
+The are many examples of dynamically generated reports online. Try exploring the links below.
+
+-   Example 1. Reproducible report in HTML using R Markdown (SNSF report: <https://data.snf.ch/stories/open-research-data-2023-en.html>)
+
+-   Example 2. Reproducible report in pdf using Latex (robustness check analysis: <https://gitlab.uzh.ch/fabio.molo/nhb-replication>.)
+
+-   Example 3. Website with course materials: <https://github.com/avehtari/BDA_course_Aalto/tree/master>\
+
+-   Example 4. Reproducible slides with Quarto: <https://github.com/kjhealy/flipbookr-quarto/tree/main?tab=readme-ov-file>.\
+
+Try to reflect about the following questions:
+  
+-   [ ] Can you easily find the repository with the source files?
+-   [ ] What dynamic reporting tool they use?
+-   [ ] Can you access the output, rendered documents easily ?
+-   [ ] Do they use some advanced features for dynamic reporting or computational reproducibility?
+-   [ ] What would be the workflow to reproduce those reports?
