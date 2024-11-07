@@ -29,11 +29,11 @@ website:
           - text: "Instructions"            
             href: contents/instructions/index.qmd
           - text: "Slides"            
-            href: contents/slides/index.qmd
+            href: contents/slides_intro/index.qmd
           - text: "Demo"            
             href: contents/demo/index.qmd
           - text: "Sharing"            
-            href: contents/slides_sharing/index.qmd                 
+            href: contents/slides_outro/index.qmd                 
                  
 format:
     html:         
