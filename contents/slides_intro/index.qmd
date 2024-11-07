@@ -1,6 +1,7 @@
 ---
-title: "Dynamic reporting 
-  for reproducible data analysis"
+title: | 
+  Dynamic reporting \
+  for reproducible data analysis
 subtitle: A Workshop by the Center for Reproducible Science
 date:  "November 07, 2024"
 date-format: long
@@ -18,12 +19,15 @@ include-in-header:
   - text: |
       <style>
       #title-slide .title {
-        font-size: 1.5em;
+        font-size: 1.8em;
+        color: #29487d;
       }
       </style>
 format: 
   revealjs:
     menu: false
+    smaller: true
+    fig-align: left
     logo: "img/uzh_logo_d_pos_web_assoc.jpg"
     #theme: "custom-theme.scss"
     embed-resources: true
@@ -38,23 +42,29 @@ format:
 bibliography: references.bib
 ---
 
-## Objectives
+### Objectives
 
 -   Recall different aspects of reproducibility
 -   Learn fundamental concepts of dynamic reporting
 -   Understand which problems dynamic reporting solves
 
-## Example
+------------------------------------------------------------------------
+
+### Example
 
 ![@gihawi2023](img/microbiome_1.png){height="400"}
 
-## Terminology
+------------------------------------------------------------------------
+
+### Terminology
 
 <br>
 
 ![@theturingwaycommunity2022](img/turingway_reproducible_matrix.jpg){height="300"}
 
-## Generalizability
+------------------------------------------------------------------------
+
+### Generalizability
 
 ![](img/generalizable.png){.absolute right="0" top="0" height="75"}
 
@@ -65,7 +75,9 @@ bibliography: references.bib
 -   **Translation**: Converting results in basic research into results that directly benefit humans
 :::
 
-## Generalizability: Example
+------------------------------------------------------------------------
+
+### Generalizability: Example
 
 ![](img/generalizable.png){.absolute right="0" top="0" height="75"}
 
@@ -73,13 +85,17 @@ bibliography: references.bib
 
 ![@sohn2023](img/healthcare-AI_2.png){height="130"}
 
-## Replicability: Example
+------------------------------------------------------------------------
+
+### Replicability: Example
 
 ![](img/replicable.png){.absolute right="0" top="0" height="75"}
 
 ![@opensciencecollaboration2015](img/replicability_open_science_collaboration.jpeg){height="400"}
 
-## Robustness: Example
+------------------------------------------------------------------------
+
+### Robustness: Example
 
 ![](img/robust.png){.absolute right="0" top="0" height="75"}
 
@@ -93,7 +109,9 @@ bibliography: references.bib
 :::
 :::::
 
-## Threats to robustness and replicability
+------------------------------------------------------------------------
+
+### Threats to robustness and replicability
 
 :::::: {.columns align="center"}
 :::: {.column width="50%"}
@@ -109,13 +127,14 @@ bibliography: references.bib
 :::
 ::::::
 
-## Reproducibility
+-----
+
+### Reproducibility
 
 ![](img/reproducible.png){.absolute right="0" top="0" height="75"}
 
 ![@peng2011](img/peng_reproducibility_spectrum.jpg){height="250"}
 
-. . .
 
 Additional steps:
 
@@ -125,7 +144,9 @@ Additional steps:
 -   managing dependencies with `make` (e.g. @peikert)
 :::
 
-## Reproducibility: typical problems
+------------------------------------------------------------------------
+
+### Reproducibility: typical problems
 
 :::::: {.columns align="center"}
 ::: {.column width="40%" align="top"}
@@ -141,7 +162,9 @@ Additional steps:
 ::::
 ::::::
 
-## Dynamic reporting
+------------------------------------------------------------------------
+
+### Dynamic reporting
 
 :::::: {.columns align="center"}
 ::: {.column width="45%" align="top"}
@@ -163,28 +186,38 @@ Dynamic reporting
 ::::
 ::::::
 
-## A non-dynamic reporting workflow
+------------------------------------------------------------------------
+
+### A non-dynamic reporting workflow
 
 ![](img/non-dynamic-workflow.jpg){height="400"}
 
-## A dynamic reporting workflow
+------------------------------------------------------------------------
+
+### A dynamic reporting workflow
 
 ![](img/dynamic-workflow.jpg){height="400"}
 
-## Components of a dynamic report
+------------------------------------------------------------------------
+
+### Components of a dynamic report
 
 ![](img/dynamic_reporting_components.png){height="400"}
 
-## Common markup languages
+------------------------------------------------------------------------
+
+### Common markup languages
 
 ![](img/markup-languages.png){height="400"}
 
-## Popular implementations
+------------------------------------------------------------------------
+
+### Popular implementations
 
 <br>
 
 |                  | Code             | Markup   | Output formats                  |
-|--------------------|-----------------|-----------------|-----------------|
+|-------------------|------------------|------------------|------------------|
 | knitr .Rnw       | R                | LaTeX    | pdf, tex                        |
 | R Markdown       | R                | Markdown | pdf, html, docx, pptx, tex      |
 | Jupyter Notebook | Julia, Python, R | Markdown | pdf, html, tex, py, ...         |
@@ -196,7 +229,9 @@ Dynamic reporting
 
 Yihui Xie's blog post: [With Quarto coming, is R Markdown going away? No.](https://yihui.org/en/2022/04/quarto-r-markdown/)
 
-## The Quarto Render action
+------------------------------------------------------------------------
+
+### The Quarto Render action
 
 <br>
 
@@ -204,7 +239,9 @@ Yihui Xie's blog post: [With Quarto coming, is R Markdown going away? No.](https
 
 Source: <https://quarto.org/docs/get-started/hello/rstudio.html>
 
-## Limitations and Outlook
+------------------------------------------------------------------------
+
+### Limitations and Outlook
 
 :::::: {.columns align="center"}
 ::: {.column width="45%" align="top"}
@@ -225,7 +262,9 @@ Source: <https://quarto.org/docs/get-started/hello/rstudio.html>
 ::::
 ::::::
 
-## Additional Resources
+------------------------------------------------------------------------
+
+### Additional Resources
 
 -   CRS Primer on dynamic reporting: <https://doi.org/10.5281/zenodo.7565735>
 -   Quarto intro tutorial: <https://quarto.org/docs/get-started/hello/rstudio.html>
@@ -235,7 +274,9 @@ Source: <https://quarto.org/docs/get-started/hello/rstudio.html>
 -   Reproducible manuscripts with Quarto: [Slides by Mine Cetinkaya-Rundel](https://mine.quarto.pub/manuscripts-conf23/#/title-slide)
 -   Quarto/RMarkdown -- What's different?: [Slides by Ted Laderas](https://laderast.github.io/qmd_rmd/#/title-slide)
 
-## The Center for Reproducible Science
+------------------------------------------------------------------------
+
+### The Center for Reproducible Science
 
 ::::: {.columns align="center"}
 ::: {.column width="50%"}
@@ -256,7 +297,9 @@ Source: <https://quarto.org/docs/get-started/hello/rstudio.html>
 :::
 :::::
 
-## The Swiss Reproducibility Network
+------------------------------------------------------------------------
+
+### The Swiss Reproducibility Network
 
 ::::: {.columns align="center"}
 ::: {.column width="50%"}
@@ -276,4 +319,6 @@ Working groups:
 :::
 :::::
 
-## References {.smaller}
+------------------------------------------------------------------------
+
+### References {.smaller}
