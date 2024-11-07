@@ -16,6 +16,7 @@ pages:
     
   script: 
   - quarto render 
+  - mkdir ./public/
   - cp -r ./_site/* ./public/  
  
   artifacts:    
