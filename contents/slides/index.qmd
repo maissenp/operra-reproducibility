@@ -22,8 +22,6 @@ format:
     embed-resources: true
     progress: true
     slide-number: true
-    progress: true
-    slide-number: true
     footer: "Center for Reproducible Science | <a href='https://crsuzh.pages.uzh.ch/Workshop_Quarto_2024_UNIGE' target='_blank'> Home </a>"
     title-slide-attributes:
       #data-background-image: narrow_alps.png
