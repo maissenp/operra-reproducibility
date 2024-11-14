@@ -4,8 +4,6 @@ subtitle: "Workflows for dynamically generated reports"
 author: "Fabio Molo and Gorka Fraga Gonzalez"
 editor: visual
 preview-links: true
-listing: 
-  contents: 'slides'
 format: 
   revealjs:
     pdf: true
