@@ -203,7 +203,125 @@ Try to explore different options for code execution:
 
 {{< pagebreak >}}
 
-# Demo II - Explore other examples
+# Demo II - Some good habits in data visualisation
+
+In the following we try illustrate some data visualisation principles by virtue of an example. TIt is based on the [CRS Primer on Data Visualisation](https://doi.org/10.5281/zenodo.8354336). The data is available here: <https://osf.io/rk3mp>. In addition we use ideas from @weissgerber_2015.
+
+The primer identifies five principles of data visualisation:
+
+-   Honesty\
+-   Preattentive attributes\
+-   Aesthetics\
+-   Hierarchy\
+-   Economy
+
+We start from @fig-original_plot, comparing the mean outcomes in two groups with different treatment. We first load additionally required R libraries, then the data.
+
+```{r}
+#| warning: false
+library(tidyr)
+library(readr)
+library(ggbeeswarm)
+```
+
+```{r}
+#| label: load_data
+vis_data <- read_csv("https://osf.io/download/rk3mp/")
+```
+
+```{r}
+#| label: fig-original_plot
+#| echo: true
+
+data_summary <- vis_data %>% 
+  group_by(NameOfDrug) %>% 
+  summarise(value = mean(logOutc_value), sd = sd(logOutc_value)) 
+  
+p1 <- ggplot(data_summary, aes(x = NameOfDrug, y = value, fill = NameOfDrug)) +
+  geom_bar(stat = "identity", alpha=0.7, width=0.5) +
+  geom_pointrange(
+    aes(ymin = value-sd, ymax = value+sd),
+    color="gray40",
+    linewidth = 1.3,
+    size = 1.5
+    ) +
+  theme(
+    panel.grid = element_line(color="lightgrey"),
+    legend.title = element_text(size = 13),
+    legend.text = element_text(size = 11)
+  ) +
+  labs(y = "Outcome", x = "Drug") +
+  scale_fill_manual(values = c("red", "green"), name = "Drug") +
+  coord_cartesian(ylim = c(7, 9.5)) +
+  scale_y_continuous()
+
+p1
+```
+
+## Improve the bar plot
+
+We can improve this plot along some of the data visualisation principles introduced above.
+
+-   Economy: 
+    -   set a minimalist theme
+    -   remove the redundant legend
+    -   remove the panel grid
+    -   remove axis.ticks
+-   Preattentive attributes
+    -   use more easily distinguishable colors
+        -   A simulator for inspecting color palettes under different color vision conditions is available here: <https://www.susielu.com/data-viz/viz-palette>
+        -   @zeileis_2020 provides a comprehensive discussion of using colors in R. 
+-   Honesty:
+    -   set axis to full range
+    -   display aspects of the data distribution, not only summary statistics
+        -   use boxplot instead of barplot
+    -   **display raw data**
+-   Aesthetics:
+    -   use beeswarm or jitter
+    -   color only the shapes' borders (use the aesthetic 'color' instead of 'fill')
+    -   set appropriate axis font sizes
+    
+```{r}
+#| label: improved_plot
+#| eval: true
+#| include: true
+#| echo: true
+p2 <- ggplot(vis_data, aes(x=NameOfDrug,y=logOutc_value,color=NameOfDrug))+
+  geom_boxplot(width=0.1,position = position_nudge(x=0.3))+
+  geom_beeswarm()+
+  theme_bw()+
+  theme(
+    panel.grid.major = element_blank(),
+    axis.text = element_text(size=14),
+    axis.title = element_text(size=17),
+    legend.position = "none"
+  )+
+  scale_color_manual(values=c("#00608b","#ffa600"),name="Drug")+
+  labs(y="Outcome",x="Drug")+
+  scale_y_continuous(limits=c(7.6,10),breaks=seq(7.5,10,0.5))
+
+p2
+```    
+
+## Putting the two graphs together
+
+We can use Quarto functionality to display the original and the revised plot side-by-side, specifically the execution options `layout-ncol` to define the number of columns, `fig-cap` for the global caption, and `fig-subcap` for column-specific captions.
+
+```{r}
+#| label: fig-summary
+#| echo: false
+#| layout-ncol: 2 # or layout: [[40, -10, 40]]
+#| fig-cap: "Two figures that display the same data."
+#| fig-subcap:
+#|   - "Original figure"
+#|   - "New figure"
+
+p1
+p2
+
+```
+
+# Demo III - Explore other examples
 
 The are many examples of dynamically generated reports online. Try exploring the links below.
 
