@@ -9,7 +9,10 @@ pages:
     
   script: 
   - cd contents
-  - quarto render --output-dir public
+  - quarto render
+  - mkdir ../public/
+  - cp -r ./_site/* ../public/
+
  
   artifacts:    
     paths:
