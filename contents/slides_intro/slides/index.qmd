@@ -1,19 +1,15 @@
 ---
 title: | 
-  Dynamic reporting \
-  for reproducible data analysis
+  Reproducible and dynamic reporting \
+  with R and Quarto -- geting started
 subtitle: A Workshop by the Center for Reproducible Science
-date:  "November 07, 2024"
+date:  "May 15, 2025"
 date-format: long
-#image:  Infographic_dynamic_reporting.jpg
-#image-height: 10px
-#title-slide-style: pandoc
 author:
-  - name: Fabio Molo
-    #affiliation: Center for Reproducible Science
-  - name: Gorka Fraga Gonzalez
-    #affiliation: Center for Reproducible Science
-editor: visual
+  - Gorka Fraga Gonzalez
+  - Fabio Molo
+  - Samuel Pawel
+editor: source
 preview-links: true
 include-in-header:
   - text: |
@@ -28,7 +24,6 @@ format:
     menu: true
     pdf: true
     smaller: true
-    fig-align: left
     logo: "img/uzh_logo_d_pos_web_assoc.jpg"
     #theme: "custom-theme.scss"
     embed-resources: true
@@ -36,55 +31,48 @@ format:
     slide-number: true
     footer: "Center for Reproducible Science | [Home](../index.qmd)"
     title-slide-attributes:
-      #data-background-image: narrow_alps.png
       data-background-size: contain
       data-background-position: bottom
       data-background-opacity: "0.8"
 bibliography: references.bib
 ---
 
-### Objectives
+### Computational reproducibility
 
--   Recall different aspects of reproducibility
--   Learn fundamental concepts of dynamic reporting
--   Understand which problems dynamic reporting solves
+::: incremental
+-   The same analysis\
+-   of the same data\
+-   obtains the same results
+:::
 
 ------------------------------------------------------------------------
 
 ### Example
 
-![@gihawi2023](img/microbiome_1.png){height="400"}
-
-------------------------------------------------------------------------
-
-### Terminology
-
-<br>
-
-![@theturingwaycommunity2022](img/turingway_reproducible_matrix.jpg){height="300"}
-
-------------------------------------------------------------------------
-
-### Generalizability
-
-![](img/generalizable.png){.absolute right="0" top="0" height="75"}
-
-<br> Generalizeability is a multi-faceted concept, among other things referring to:
+![@samuel2024](img/samuel2024.png)
 
 ::: incremental
--   **Extrapolation**: Extending conclusions available from studies in one or more subgroups of a population to another subgroup of the population
--   **Translation**: Converting results in basic research into results that directly benefit humans
+-   Attempted to rerun **22,578 Jupyter notebooks** associated with 3,467 publications
+-   For 10,388 of these, all declared dependencies could be installed successfully
+-   1,203 notebooks ran through without any errors\
+-   **879 notebooks** produced results identical to those reported in the original notebook
 :::
 
 ------------------------------------------------------------------------
 
-### Generalizability: Example
+### Context and Terminology
 
-![](img/generalizable.png){.absolute right="0" top="0" height="75"}
+<br>
 
-![](img/healthcare-AI_1.png){height="270"}
+![@theturingwaycommunity2022](img/turingway_reproducible_matrix.jpg)
 
-![@sohn2023](img/healthcare-AI_2.png){height="130"}
+------------------------------------------------------------------------
+
+### Reproducibility
+
+![](img/reproducible.png){.absolute right="0" top="0" height="75"}
+
+![Inspired by @peng2011 and @peikert](img/comp-repro-spectrum.png)
 
 ------------------------------------------------------------------------
 
@@ -92,7 +80,7 @@ bibliography: references.bib
 
 ![](img/replicable.png){.absolute right="0" top="0" height="75"}
 
-![@opensciencecollaboration2015](img/replicability_open_science_collaboration.jpeg){height="400"}
+![@opensciencecollaboration2015](img/replicability_open_science_collaboration.jpeg){fig-align="center" width="640"}
 
 ------------------------------------------------------------------------
 
@@ -102,17 +90,25 @@ bibliography: references.bib
 
 ::::: {.columns align="center"}
 ::: {.column width="50%"}
-![@gould2023](img/ecology_1.png){height="400"}
+![@gould2023](img/ecology_1.png)
 :::
 
-::: {.column width="50%" align="top"}
+::: {.column width="50%"}
 ![](img/ecology_2.png){height="400"}
 :::
 :::::
 
 ------------------------------------------------------------------------
 
-### Threats to robustness and replicability
+### Generalizability: Example
+
+![](img/generalizable.png){.absolute right="0" top="0" height="75"}
+
+![](img/healthcare-AI_1.png){width="66%"} ![](img/healthcare-AI_2.png)
+
+------------------------------------------------------------------------
+
+### Threats
 
 :::::: {.columns align="center"}
 :::: {.column width="50%"}
@@ -130,149 +126,144 @@ bibliography: references.bib
 
 ------------------------------------------------------------------------
 
-### Reproducibility
+### Intermediary results
 
-![](img/reproducible.png){.absolute right="0" top="0" height="75"}
-
-![@peng2011](img/peng_reproducibility_spectrum.jpg){height="250"}
-
-Additional steps:
-
-::: incremental
--   versioning (e.g. tutorial at <https://swcarpentry.github.io/git-novice/>)
--   containerization (e.g. CRS Primer @fragagonzález2024)
--   managing dependencies with `make` (e.g. @peikert)
+::::: incremental
+::: fragment
+-   Reproducible research is hard and may feel overwhealming
 :::
 
-------------------------------------------------------------------------
-
-### Reproducibility: typical problems
-
-:::::: {.columns align="center"}
-::: {.column width="40%" align="top"}
-![](img/dependencies.png){height="300"}
+::: fragment
+-   Do not despair! With every step...
+    -   you are already one step ahead
+    -   you already improve the quality of your research (and of your life)
+    -   you learn broadly applicable technical skills
 :::
-
-:::: {.column .fragment width="60%"}
-::: incremental
--   unclear execution order
--   probably poor documentation
--   unclear further processing of output
-:::
-::::
-::::::
-
-------------------------------------------------------------------------
-
-### Dynamic reporting
-
-:::::: {.columns align="center"}
-::: {.column width="45%" align="top"}
-Problems
-
--   unclear execution order
--   probably poor documentation
--   unclear further processing of the output
-:::
-
-:::: {.column .fragment width="55%"}
-Dynamic reporting
-
-::: incremental
--   defines order in one single file
--   simplifies documentation with a markup language
--   automates generation and processing of code output
-:::
-::::
-::::::
+:::::
 
 ------------------------------------------------------------------------
 
 ### A non-dynamic reporting workflow
 
-![](img/non-dynamic-workflow.jpg){height="400"}
+![](img/non-dynamic-workflow.jpg)
 
 ------------------------------------------------------------------------
 
-### A dynamic reporting workflow
-
-![](img/dynamic-workflow.jpg){height="400"}
-
-------------------------------------------------------------------------
-
-### Components of a dynamic report
-
-![](img/dynamic_reporting_components.png){height="400"}
-
-------------------------------------------------------------------------
-
-### Common markup languages
-
-![](img/markup-languages.png){height="400"}
-
-------------------------------------------------------------------------
-
-### Popular implementations
-
-<br>
-
-|                  | Code             | Markup   | Output formats                  |
-|----------------|----------------|----------------|------------------------|
-| knitr .Rnw       | R                | LaTeX    | pdf, tex                        |
-| R Markdown       | R                | Markdown | pdf, html, docx, pptx, tex      |
-| Jupyter Notebook | Julia, Python, R | Markdown | pdf, html, tex, py, ...         |
-| Quarto           | Julia, Python, R | Markdown | pdf, html, tex, docx, pptx, ... |
-
-: {.striped tbl-colwidths="\[30,25,20,40\]"}
-
-<br>
-
-Yihui Xie's blog post: [With Quarto coming, is R Markdown going away? No.](https://yihui.org/en/2022/04/quarto-r-markdown/)
-
-------------------------------------------------------------------------
-
-### The Quarto Render action
-
-<br>
-
-![](img/render-action.png){height="175"}
-
-Source: <https://quarto.org/docs/get-started/hello/rstudio.html>
-
-------------------------------------------------------------------------
-
-### Limitations and Outlook
+### Typical problems
 
 :::::: {.columns align="center"}
-::: {.column width="45%" align="top"}
-**Limitations**
-
--   adds new dependencies
--   does not guarantee computational reproducibility
--   challenges for collaborative editing of manuscripts
+::: {.column width="40%" align="top"}
+![](img/dependencies.png){height="400"}
 :::
 
-:::: {.column .fragment width="55%"}
-**Facilitators**
-
+:::: {.column width="60%"}
 ::: incremental
--   integrates well with other good practices for computational reproducibility
--   growing number of tools for collaborative editing of source documents
+-   unclear execution order\
+-   repeated copy-pasting, maybe errors\
+-   unclear further processing of images and tables\
 :::
 ::::
 ::::::
 
 ------------------------------------------------------------------------
 
+### Dynamic reporting: the ambition {.center}
+
+`raw data` $\rightarrow$ dynamic reporting file $\rightarrow$ `manuscript`
+
+------------------------------------------------------------------------
+
+### A dynamic reporting workflow
+
+![](img/dynamic-workflow.jpg)
+
+------------------------------------------------------------------------
+
+### Components of a dynamic report
+
+![](img/dynamic_reporting_components.png)
+
+------------------------------------------------------------------------
+
+### Text: common markup languages
+
+![](img/markup-languages.png)
+
+------------------------------------------------------------------------
+
+### Some implementations - history
+
+![](img/implementation-timeline.png){width="733"}
+
+
+----
+
+### Some implementations
+ 
+|   | File | Code | Markup | Output formats |
+|--------------|--------------|--------------|--------------|------------------|
+| Sweave | .Rnw | R | LaTeX | pdf, tex |
+| R Markdown | .Rmd | R | Markdown | pdf, html, tex, docx, pptx |
+| Jupyter Notebook | .ipynb | Julia, Python, R | Markdown | pdf, html, tex, py, ... |
+| Quarto | .qmd | Julia, Python, R | Markdown | pdf, html, tex, docx, pptx, ... |
+
+: {.striped tbl-colwidths="\[29,10,26,18,38\]"}
+
+------------------------------------------------------------------------
+
+### Why Quarto?
+
+-   open source
+-   modern, with new features being developed\
+-   easy to use with multiple code languages\
+-   general-purpose scientific publishing system (for slides, websites, etc.)
+
+------------------------------------------------------------------------
+
+### Dynamic reporting in Quarto / RStudio
+
+![CC by [Desirée De Leon](https://github.com/dcossyleon)](img/rstudio-rmarkdown.png)
+
+------------------------------------------------------------------------
+
 ### Additional Resources
 
--   CRS Primer on dynamic reporting: <https://doi.org/10.5281/zenodo.7565735>
--   Quarto intro tutorial: <https://quarto.org/docs/get-started/hello/rstudio.html>
--   Quarto authoring tutorial: <https://quarto.org/docs/get-started/authoring/>
--   Quarto article layout: <https://quarto.org/docs/authoring/article-layout.html>
--   R4DS chapter on Quarto: <https://r4ds.hadley.nz/quarto>
--   Reproducible manuscripts with Quarto: [Slides by Mine Cetinkaya-Rundel](https://mine.quarto.pub/manuscripts-conf23/#/title-slide)
+-   CRS Primer on dynamic reporting: <https://doi.org/10.5281/zenodo.7565735>\
+-   Quarto intro tutorial: <https://quarto.org/docs/get-started/hello/rstudio.html>\
+-   Quarto authoring tutorial: <https://quarto.org/docs/get-started/authoring/>\
+-   Quarto article layout: <https://quarto.org/docs/authoring/article-layout.html>\
+-   R4DS chapter on Quarto: <https://r4ds.hadley.nz/quarto>\
+-   Yihui Xie's blog post: [With Quarto coming, is R Markdown going away? No.](https://yihui.org/en/2022/04/quarto-r-markdown/)\
+-   Reproducible manuscripts with Quarto: [Slides by Mine Cetinkaya-Rundel](https://mine.quarto.pub/manuscripts-conf23/#/title-slide)\
 -   Quarto/RMarkdown -- What's different?: [Slides by Ted Laderas](https://laderast.github.io/qmd_rmd/#/title-slide)
+
+------------------------------------------------------------------------
+
+### The Swiss Reproducibility Network Academy
+
+
+:::: {.columns}
+
+::: {.column width="75%"}
+- Early career researchers section of the SwissRN
+
+- Goal 1: Connect young researchers interested in reproducibility in Switzerland
+- Goal 2: Improve reproducibility of research in Switzerland
+
+- How to join? 
+  * young researchers based in Switzerland (working language is English)
+  * strong interest in good research practices and reproducibility 
+  * every field is welcome (diversity is the key!)
+
+- More information: <https://www.swissrn.org/contents/academy/>
+:::
+
+::: {.column width="25%"}
+![](img/swissrn_logo.png)
+:::
+
+::::
+
 
 ------------------------------------------------------------------------
 
@@ -280,42 +271,20 @@ Source: <https://quarto.org/docs/get-started/hello/rstudio.html>
 
 ::::: {.columns align="center"}
 ::: {.column width="50%"}
-![](img/crs_logo.png){height="175"}
+![](img/crs_logo.png){height="300"}
 :::
 
 ::: {.column width="50%" align="top"}
-**Teaching and training**:
-
--   Good Research Practice courses
--   [Primers](https://www.crs.uzh.ch/en/resources/CRS-Primers.html) and [Reproducibility Notes](https://www.crs.uzh.ch/en/resources/CRS-Reproducibility-Notes.html)
--   [ReproducibiliTea](https://www.crs.uzh.ch/en/training/ReproducibiliTea.html) journal club
-
 **Research**:
 
+-   Meta-research methods\
 -   Design and analysis of replication studies
--   Meta-research
-:::
-:::::
 
-------------------------------------------------------------------------
+**Teaching and training**:
 
-### The Swiss Reproducibility Network
-
-::::: {.columns align="center"}
-::: {.column width="50%"}
-![](img/swissrn_logo.png){height="175"}
-
-Working groups:
-
--   Computational Reproducibility
--   Open Research Data
--   Preregistration and Registered Reports
--   Training
--   Research Assessment and Incentives
-:::
-
-::: {.column width="50%" align="top"}
-![](img/swissrn_nodes.png){height="250"}
+-   Good Research Practice courses\
+-   [Primers](https://www.crs.uzh.ch/en/resources/CRS-Primers.html) and [Reproducibility Notes](https://www.crs.uzh.ch/en/resources/CRS-Reproducibility-Notes.html)\
+-   [ReproducibiliTea](https://www.crs.uzh.ch/en/training/ReproducibiliTea.html) journal club
 :::
 :::::
 
