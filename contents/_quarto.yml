@@ -39,7 +39,9 @@ format:
     html:         
         grid:
           sidebar-width: 350px
-        theme: cosmo
+        theme:
+          light: flatly
+          dark: darkly
         code-link: true
         toc: true
         toc-expand: 4
