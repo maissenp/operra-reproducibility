@@ -118,7 +118,7 @@ A (too) simple definition:
 
 ![](img/healthcare-AI_1.png){width="60%" fig-align="center"}
 
-![](img/healthcare-AI_2.png){width="40%" fig-align="center"}
+![@sohn2023](img/healthcare-AI_2.png){width="40%" fig-align="center"}
 
 ------------------------------------------------------------------------
 
@@ -246,7 +246,7 @@ Do not despair! With every step...
 :::
 
 ::: {.column width="25%"}
-![[<https://quarto.org/quarto.png>]{style="font-size:0.6em"}](img/quarto.png){fig-align="center"}
+![[<https://quarto.org/quarto.png>]{style="font-size:0.6em"}](img/quarto.png)
 :::
 ::::
 
@@ -254,9 +254,9 @@ Do not despair! With every step...
 
 ------------------------------------------------------------------------
 
-## Dynamic reporting with Quarto in RStudio
+## Quarto in RStudio
 
-![CC by [Desirée De Leon](https://github.com/dcossyleon)](img/rstudio-rmarkdown.png)
+![CC by [Desirée De Leon](https://github.com/dcossyleon)](img/rstudio-rmarkdown.png){fig-align="center" width="85%"}
 
 ------------------------------------------------------------------------
 
