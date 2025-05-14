@@ -20,23 +20,23 @@ execute:
 bibliography: references.bib
 ---
 
-This hands-on demo requires R and Quarto. Visit the [instructions](../instructions/index.qmd) page to get ready.
+This hands-on demo requires R and Quarto. Visit the [instructions](../instructions/index.qmd) page to learn how to install them.
 
 # Creating a Quarto file
 
 1)  In the RStudio menu, go to `File > New File > Quarto document`
 2)  Use the default settings and enter a filename
-3)  Save the file with a `.qmd` filename extension
+3)  Save the file with a .qmd filename extension
 4)  Click on the button `Render` with the blue arrow on top of the editor in RStudio
 5)  An .html file with the same name as your .qmd file should have been generated
 
 <h3>🎉 Congratulations, you have generated your first dynamic report! 🎊  </h3>
 
-We will now modify the report with our own content and analysis.
+We will now modify the report with our own content.
 
 # Editing the YAML header
 
-The YAML[^1] header delimited by (`---`) specifies options and metadata of your report. Add information about `author`, `affiliation` and `date` (use `last-modified` to always display the latest date) and define the output format as `pdf` or `html`. Be careful with *indentation*, YAML is sensitive to spacing! The header can be kept simple or it can contain a lot of information. An example:
+The YAML[^1] header delimited by (`---`) specifies options and metadata of your report. Add information about `author` and `date` (use `last-modified` to always display the latest date) and define the output format as either `pdf` or `html`. Be careful with *indentation*, YAML is sensitive to spacing! The header can be kept simple or it can contain a lot of information. An example:
 
 [^1]: YAML is an acronym for "Yet Another Markup Language"
 
@@ -64,13 +64,28 @@ format:
 ---
 ```
 
-::: {#tip-chunks .callout-tip collapse="false"}
-#### Multiple output formats
+<!-- ::: {#tip-chunks .callout-tip collapse="false"} -->
 
-When specifying multiple outputs, clicking on the down-arrow next to `Render` allows you to change the output format (e.g., change from html to pdf)
+<!-- #### Multiple output formats -->
+
+<!-- When specifying multiple outputs, clicking on the down-arrow next to `Render` allows you to change the output format (e.g., change from html to pdf) -->
+
+<!-- ::: -->
+
+::: {.callout-note appearance="minimal"}
+## Optional exercises
+
+-   Also add your email and affiliation
+-   Render the report both as HTML and PDF
 :::
 
 Re-render your report to see the changes you just made.
+
+::: {.callout-tip collapse="false"}
+#### Render often
+
+When working on a dynamic report it is recommended to re-render the report often. This allows us to quickly spot errors and fix them on the fly. A useful keyboard shortcut for rendering is `Ctrl+Shift+K` (or `CMD+Shift+K` on Mac).
+:::
 
 # Editing the report content
 
@@ -117,35 +132,19 @@ This type of text editing is different from WYSIWYG (*What you see is what you g
 ::: {.callout-note appearance="minimal"}
 ## Optional exercise
 
-Try to include an image in your report. Use the visual mode to shrink it down and see how the code for resizing looks like.
+Include an image in your report. Use the visual mode to shrink it down and see how the code for resizing looks like.
 :::
+
+<!-- ![](https://upload.wikimedia.org/wikipedia/commons/7/74/A-Cat.jpg){fig-align="center" width="273"} -->
 
 ## Code chunks
 
 [Code chunks](https://quarto.org/docs/computations/r.html) contain executable code and let you embed results directly into your text (e.g., data summaries, plots, or tables). Code chunks are automatically re-run when the document is rendered. If any code chunk fails, the entire document may fail to render. This encourages writing reproducible, error-free code.
 
 ::: {.callout-tip collapse="false"}
-#### Render often
+#### Code chunk options
 
-When working on a dynamic report it is recommended to re-render the report often. This allows us to quickly spot errors and fix them on the fly.
-:::
-
-::: {.callout-tip collapse="false"}
-#### Code execution options
-
-The code chunks are delimited by ```` ```{r} ```` (you can specify other languages like Python, Julia, ObservableJS). For each code you can add *chunk options* to the code chunks with `#|`, for example `#| echo: false` will hide the code. In RStudio you can see the options available if you type `#|` and then press the TAB key on your keyboard. Many options can be set globally for the entire document on the YAML header (under `execute:`).   
-:::
-
-::: {.callout-note appearance="minimal"}
-## Optional exercise
-
-Explore different options for code execution:
-
--   Hide all
--   Print all code but do not execute it
--   Fold all code (accessible by clicking on a button when saved as HTML)
--   Hide only the code that generates the table
--   Render the report as both HTML and PDF
+Code chunks are delimited by ```` ```{r} ```` (you can specify other languages like Python, Julia, ObservableJS). For each code you can add *chunk options* to the code chunks with `#|`, for example `#| echo: false` will hide the code. In RStudio you can see the options available if you type `#|` and then press the TAB key on your keyboard. Many options can be set globally for the entire document on the YAML header (e.g., under `execute:`, under `html:`, or under `pdf:`).
 :::
 
 ### Load libraries
@@ -159,6 +158,16 @@ library("dplyr") # data wrangling
 library("ggplot2") # plotting
 library("kableExtra") # tables
 ```
+
+::: {.callout-note appearance="minimal"}
+## Optional exercise
+
+Explore different options for code execution:
+
+-   Hide all <!-- echo: false -->
+-   Print all code but do not execute it <!-- echo: true and eval: false -->
+-   Fold all code (accessible by clicking on a button when rendered as HTML) <!-- code-fold: true --> <!-- -   Hide only the code that generates the table -->
+:::
 
 ### Read the data
 
@@ -195,7 +204,7 @@ summaries |>
   kable(caption = "Most common name of newborns in the city of Zurich by year and sex")
 ```
 
-Note that we could also have specified a table caption via the `tbl-cap` chunk option. Moreover, we could have specified `df-print: kable` in the YAML header to automatically apply `kable` when printing a data frame. For html reports, there is also the `df-print: paged` option that creates an interactive table. See <https://quarto.org/docs/computations/r.html#data-frames> for all possibilities.
+Note that we could also have specified a table caption via the `tbl-cap` chunk option. Moreover, we could have specified `df-print: kable` in the YAML header to automatically apply `kable` when printing a data frame. For HTML reports, there is also the `df-print: paged` option that creates an interactive table. See <https://quarto.org/docs/computations/r.html#data-frames> for all possibilities.
 
 ```{r}
 #| tbl-cap: "Most common name of newborns in the city of Zurich by year and sex"
@@ -205,14 +214,15 @@ summaries
 ```
 
 ::: {.callout-note appearance="minimal"}
-## Optional exercise
+## Optional exercises
 
-Make a table that displays the number of registered births per year.
+-   Make a table that displays the number of registered births per year
+-   Generate the table via the `df-print: kable` or the `df-print: paged` (when using HTML) option in the YAML header
 :::
 
 ### Plot the data
 
-We may want to plot the most common names between 2021 and 2024. 
+Creating a plot in a code chunk, automatically inserts it into the rendered Quarto report. For example, we may want to plot the most common names between 2021 and 2024.
 
 ```{r}
 #| label: fig-names
@@ -233,12 +243,12 @@ datclean |>
   theme_minimal()
 ```
 
-Note that we added chunk options to create a caption (`#| fig-cap: "Most common names of Zurich newborns in 2021-2024."`) and a label (`#| label: fig-label`). We can then refer to [@fig-names] in the text using `[@fig-label]`. Two other important options are `fig-height` and `fig-width` which allow us to specify the height and width of our figures. 
+Note that we added chunk options to create a caption (`#| fig-cap: "Most common names of Zurich newborns in 2021-2024."`) and a label (`#| label: fig-label`). We can then refer to [@fig-names] in the text using `[@fig-label]`. Two other important options are `fig-height` and `fig-width` which allow us to specify the height and width of our figures. Here we have specified `fig-height: 5` which sets the height of the plot to 5 inches.
 
 ::: {.callout-note appearance="minimal"}
 ## Optional exercise
 
-Add a label to the previous table and refer to it in the text.
+Add a label to the previously generated table and refer to it in the text (table labels need to start with `tab` instead of `fig`!).
 :::
 
 ### Another plot
@@ -269,7 +279,7 @@ Try it with your own name!
 
 ### Inline code
 
-We can use [inline code](https://quarto.org/docs/computations/inline-code.html) to dynamically insert data summaries into text. For example,
+A "killer-feature" of dynamic reports is the possibility to add [inline code](https://quarto.org/docs/computations/inline-code.html). This allows us to dynamically insert data summaries into text, avoiding tedious and error-prone copy-and-pasting. For example,
 
 > In 2023, the most common male name was \``` r filter(summaries, year == 2023, sex == "male")$name` `` whereas the most common female name was \``` r filter(summaries, year == 2023, sex == "female")$name` ``.
 
@@ -277,57 +287,96 @@ produces
 
 > In 2023, the most common male name was `r filter(summaries, year == 2023, sex == "male")$name` whereas the most common female name was `r filter(summaries, year == 2023, sex == "female")$name`.
 
+Note that, instead of performing computations inside an inline code chunk, it is often advisable to perform computations in a separate code chunk, save the results to a variable, and then print the variable in the inline code chunk.
+
+::: {.callout-note appearance="minimal"}
+## Optional exercise
+
+Compute the total number of births in the data set and then display it via an inline code chunk.
+:::
 
 ## References
 
-It is also possible to include a bibliography file in BibTeX format (with .bib file extension) to automatically generate citations and a bibliography (<https://quarto.org/docs/authoring/citations.html>). This file has to be specified in the YAML header. In this demo, we have a `references.bib` file in the same directory as this .qmd file, so we specify:
+In Quarto, it is also possible to include a bibliography file in BibTeX format (with .bib file extension) to automatically generate citations and a bibliography (<https://quarto.org/docs/authoring/citations.html>). This file has to be specified in the YAML header. In this demo, we have a `references.bib` file in the same directory as this .qmd file, so we specify:
 
 ``` yaml
 bibliography: references.bib
 ```
 
-We can then use `[@Hofmann2023]` (with parentheses) or `@Hofmann2023` (without parentheses) to cite a bibliography item named Hofmann2023. For example, @Hofmann2023 provides a nice introduction to dynamic reporting and @Peikert2021 proposes more advanced dynamic reporting workflows.
+We can then use `[@Hofmann2023]` (with parentheses) or `@Hofmann2023` (without parentheses) to cite a bibliography item named Hofmann2023. For example, @Hofmann2023 provides an introduction to dynamic reporting. @Peikert2021 summarizes a more advanced dynamic reporting workflow. @Knuth1984 proposed the literate programming paradigm.
 
-To get the best out of this functionality
+A typical entry from a BibTeX bibliography file looks like this:
+
+``` bibtex
+@article{Knuth1984,
+  title = {Literate Programming},
+  volume = {27},
+  DOI = {10.1093/comjnl/27.2.97},
+  number = {2},
+  journal = {The Computer Journal},
+  author = {Knuth,  D. E.},
+  year = {1984},
+  pages = {97--111}
+}
+```
+
+These files can either be created manually of with a reference manager program (e.g., [Zotero](https://www.zotero.org/)).
+
+::: {.callout-tip collapse="false"}
+#### References in RStudio
+
+To facilitate reference management in RStudio:
 
 -   [Connect your RStudio project with a Zotero library](https://quarto.org/docs/visual-editor/technical.html#citations-from-zotero)
-
 -   Use the Visual editor in RStudio and go to insert\>citation
+:::
+
+::: {.callout-note appearance="minimal"}
+## Optional exercise
+
+Cite one of your favorite papers
+:::
 
 ## Reproducibility
 
-It is good practice to save details on software versions and computational environment when creating dynamic reports. A simple yet effective way to document your computational environment is to include the output of `sessionInfo()`.
+When creating dynamic reports, it is good practice to document the software versions and other parts of the computational environment. A simple yet effective way to document your computational environment is to include the output of `sessionInfo()`.
 
 ```{r}
 #| fontsize: "small"
 sessionInfo()
 ```
 
+::: {.callout-note appearance="minimal"}
+## Optional exercise
+
+Load another R package, re-render your report, and observe how the output of `sessionInfo()` changes
+:::
+
 # Practical tips
 
--   Nobody knows all the options by heart, learn how to use the [Quarto documentation](https://quarto.org/docs/reference/)!
--   Always add `sessionInfo()` or an equivalent to your report to show which packages/environment were used to generate the report
--   Use relative paths
--   Recompile your reports frequently to spot errors quickly
--   ....
+This concludes a first introduction to dynamic reporting with Quarto. Here are some further tips 
+
+-   Nobody knows all the options by heart, use the [Quarto documentation](https://quarto.org/docs/reference/)!
+-   Re-render your reports often to spot errors quickly
+-   Use relative paths so that others can reproduce your report
+-   Always add `sessionInfo()` or an equivalent at the bottom of your report to show which packages/environment were used to generate your report
+<!-- - When sharing your analyses, include a README file that documents all steps necessary to create your report -->
 
 # Gallery (optional)
 
-The are many examples of dynamically generated reports online. Try exploring the links below.
+The are many examples of dynamically generated reports online. Explore the links below:
 
--   Example 1. Reproducible report in HTML using R Markdown: <https://data.snf.ch/stories/open-research-data-2023-en.html>
-
+-   Example 1. Reproducible HTML report using R Markdown: <https://data.snf.ch/stories/open-research-data-2023-en.html>
 -   Example 2. Reproducible PDF report using knitr: <https://gitlab.uzh.ch/fabio.molo/nhb-replication>
+-   Example 3. Website with dynamically generated course materials: <https://github.com/avehtari/BDA_course_Aalto/tree/master>
+-   Example 4. Reproducible HTML slides with Quarto: <https://github.com/kjhealy/flipbookr-quarto/tree/main?tab=readme-ov-file>.
+-   Example 5. Code repository of a paper with multiple Quarto analyses (HTML): <https://github.com/SamCH93/missSim>
 
--   Example 3. Website with course materials: <https://github.com/avehtari/BDA_course_Aalto/tree/master>
+Reflect about the following questions:
 
--   Example 4. Reproducible slides with Quarto: <https://github.com/kjhealy/flipbookr-quarto/tree/main?tab=readme-ov-file>.
-
-Try to reflect about the following questions:
-
--   [ ] Can you easily find the repository with the source files?
+-   [ ] Can you find the source files that generate the reports?
 -   [ ] Which dynamic reporting tools are used?
--   [ ] Can you access the outputs easily?
+-   [ ] Can you access the outputs?
 -   [ ] Do they use some advanced features for dynamic reporting or computational reproducibility?
 -   [ ] What would be the workflow to reproduce these reports?
 
