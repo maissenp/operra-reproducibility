@@ -137,6 +137,14 @@ The README.md file has a link to the ZENODO entry with a DOI and citation inform
 
 ------------------------------------------------------------------------
 
-<br> <br> Open Science:
 
-> “as open as possible, as closed as necessary”
+### Publication workflow
+
+ 
+![](images/clipboard-2848047380.png){height="500px" fig-align="left"}
+
+
+------------------------------------------------------------------------
+
+
+T h a n K -  Y o U
