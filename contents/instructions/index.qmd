@@ -39,7 +39,42 @@ Additional instructions regarding ```LaTeX```, can be found here: <https://quart
 
 ### Python 
 
-TODO
+First, install Quarto and pick your favorite development environment by following the [instructions here](https://quarto.org/docs/get-started/). If you don't yet have Python 3 on your system, we recommend you install a version using the standard installer from <https://www.python.org/downloads/>. We will use a few additional Python packages in the workshop. It is best practice to always install Python packages in virtual environments, for example, using [venv](https://docs.python.org/3/library/venv.html) (included in Python) or [conda](https://docs.conda.io/projects/conda/en/stable/user-guide/install/index.html) (separate installation).
+
+::: {.panel-tabset}
+
+#### venv
+
+```bash
+python -m venv quarto-env
+source quarto-env/bin/activate
+pip install --upgrade pip
+pip install pandas matplotlib numpy jupyter itables seaborn
+```
+
+#### conda
+
+```bash
+conda create -n quarto-env python=3.12
+conda activate quarto-env
+conda install pandas matplotlib numpy jupyter seaborn
+```
+
+::: {.callout-caution}
+##### Kernels from Conda
+
+If you are using a kernel that is contained within an external conda environment you need to take an extra step to make sure it is recognized by Quarto. Please follow the instructions here to make conda managed kernels available:
+
+<https://github.com/Anaconda-Platform/nb_conda_kernels#use-with-nbconvert-voila-papermill>
+
+Note that this step is not required if you are merely using conda with Quarto. It applies to using kernels other than the default Python kernel that happen to be installed within a conda environment separate from the one you are using.
+:::
+
+:::
+
+::: {.callout-note}
+Note: The above package install commands don't specify the package versions. To exactly reproduce the results from the hands-on demo, download `requirements.txt` from this site's [GitLab repository](https://gitlab.uzh.ch/crsuzh/workshop-quarto-2025-unige) and install the packages using `pip install -r requirements.txt` instead.
+:::
 
 ## Alternative 1: Other development environments (optional)
 
@@ -51,5 +86,21 @@ If you do not want to install anything on your computer you can also use a cloud
 
 -  register with your email address and choose a password;
 -  select the "Free Cloud" subscription option.
--  Once logged in, go to your workspace and click on `New Project` (top right corner), then choose `New RStudio Project`. 
+-  Once logged in, go to your workspace and click on `New Project` (top right corner), then choose `New RStudio Project`.  
 
+## Alternative 3: Docker (optional)
+
+This option is for advanced users who have [Docker](https://www.docker.com/) installed on their system. Change to a new directory for the workshop and copy the Dockerfile from this website's [GitLab repository](https://gitlab.uzh.ch/crsuzh/workshop-quarto-2025-unige). Then, build the Docker image:
+
+```bash
+docker build -t pyverse .
+```
+
+Run a live dev session:
+
+```bash
+docker run -d -p 8787:8787 -e PASSWORD=rstudio \
+  -v "$(pwd)":/home/rstudio/project pyverse
+```
+
+Open RStudio Server at <http://localhost:8787/> and create a new `.qmd``Quarto file.

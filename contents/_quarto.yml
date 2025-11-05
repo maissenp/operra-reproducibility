@@ -31,6 +31,8 @@ website:
             href: ./slides_intro/index.qmd
           - text: "Hands-On (R)"
             href: ./demo_R/index.qmd
+          - text: "Hands-On (Python)"
+            href: ./demo_py/index.qmd
           - text: "Sharing/Publishing"
             href: ./slides_sharing/index.qmd
           - text: "Advanced"

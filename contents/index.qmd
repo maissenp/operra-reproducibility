@@ -26,6 +26,7 @@ listing:
     - /instructions/*.qmd
     - /slides_intro/*.qmd
     - /demo_R/*.qmd
+    - /demo_py/*.qmd
     - /slides_sharing/*.qmd
     - /slides_advanced/*.qmd
     
