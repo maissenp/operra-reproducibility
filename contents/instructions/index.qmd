@@ -62,8 +62,8 @@ pip install -r requirements.txt
 ```bash
 mkdir quarto-workshop
 cd quarto-workshop
-wget -O requirements.txt https://gitlab.uzh.ch/crsuzh/workshop-quarto-2025-unige/-/raw/main/requirements.txt?ref_type=heads
-conda create -n quarto-env --file requirements.txt python=3.12
+wget -O environment.yaml https://gitlab.uzh.ch/crsuzh/workshop-quarto-2025-unige/-/raw/main/environment.yaml?ref_type=heads
+conda env create --file environment.yaml python=3.12.3
 conda activate quarto-env
 ```
 
