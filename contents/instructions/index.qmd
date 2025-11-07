@@ -1,6 +1,9 @@
 ---
 title: "Installation Instructions" 
 author:
+  - name: "Peter Degen"
+    orcid: 0009-0004-0706-9200
+
   - name: "Gorka Fraga González"
     orcid: 0000-0002-1857-8607
     
@@ -46,9 +49,9 @@ If you do not want to install anything on your computer you can also use a cloud
 
 ## Alternative 2: Python (optional)
 
-In the workshop we will use R and RStudio for demonstration, but ```Quarto``` can also be used with Python instead of R and with VS Code, Jupyter Notebooks or other development environments instead of RStudio.
+In the workshop we will focus on R and RStudio for demonstration, but ```Quarto``` can also be used with Python instead of R and with VS Code, Jupyter Notebooks or other development environments instead of RStudio.
 
-To get up and running with Python, first install Quarto and pick your favorite development environment by following the [instructions here](https://quarto.org/docs/get-started/) (we will use VS Code in the hands-on demo). If you don't yet have Python 3 on your system, we recommend you install a version using the standard installer from <https://www.python.org/downloads/>. We will the following additional Python packages in the workshop: `pandas matplotlib numpy jupyter itables seaborn`. For reproducibility, it is best to install the exact package versions and their dependencies using an environment specification file such as `requirements.txt`. Moreover, it is best practice to always install Python packages in virtual environments, for example, using [venv](https://docs.python.org/3/library/venv.html) (included in Python) or [conda](https://docs.conda.io/projects/conda/en/stable/user-guide/install/index.html) (separate installation). Execute the following commands in your terminal to get started:
+To get up and running with Python, first install Quarto and pick your favorite development environment by following the [instructions here](https://quarto.org/docs/get-started/) (we will use VS Code in the hands-on demo). If you don't yet have Python 3 on your system, we recommend you [install version 3.12.3](https://www.python.org/downloads/release/python-3123/) to ensure maximum compatibility with the version used in the hands-on demo. We will further use the following Python packages in the workshop: `pandas matplotlib numpy jupyter itables seaborn`. It is best practice to always install Python packages in virtual environments, for example, using [venv](https://docs.python.org/3/library/venv.html) (included in Python) or [conda](https://docs.conda.io/projects/conda/en/stable/user-guide/install/index.html) (separate installation). Moreover, for improved reproducibility, it is best to install the exact package versions and their dependencies using an environment specification file such as `requirements.txt` (venv) or `environment.yaml` (conda). Pick one and execute the following commands in your terminal to get started:
 
 ::: {.panel-tabset}
 
