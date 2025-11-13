@@ -182,7 +182,7 @@ Website with all materials: <https://crsuzh.pages.uzh.ch/workshop-quarto-2025-un
 
 ::::: {.columns align="center"}
 ::: {.column width="50%"}
-![@gould2023](img/ecology_1.png)
+![@Gould2025](img/ecology_1.png)
 :::
 
 ::: {.column width="50%"}
