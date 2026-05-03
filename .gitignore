@@ -1,15 +1,22 @@
+# Editor / OS
+.DS_Store
 .Rproj.user
 .Rhistory
 .RData
 .Ruserdata
+
+# Quarto build output
+.quarto/
 _site/
 _freeze/
-.quarto/
+*.quarto_ipynb
 
-/.quarto/
-_site 
-_freeze
-*quarto_ipynb
-
-.DS_Store
+# Claude Code
 /.claude/
+
+# Workflow scratch and outputs (demo workflows)
+.nextflow/
+.nextflow.log*
+.snakemake/
+**/demo/*/work/
+**/demo/*/results/
