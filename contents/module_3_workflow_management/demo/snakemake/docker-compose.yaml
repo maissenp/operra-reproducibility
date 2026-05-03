@@ -1,0 +1,13 @@
+services:
+  snakemake:
+    build:
+      context: .
+      args:
+        SNAKEMAKE_TAG: "v8.20.6"
+    image: operra-snakemake-demo:v8.20.6
+    working_dir: /workspace
+    volumes:
+      - .:/workspace
+    # Keep the container running so people can exec into it and run snakemake.
+    command: ["sh", "-lc", "sleep infinity"]
+    tty: true

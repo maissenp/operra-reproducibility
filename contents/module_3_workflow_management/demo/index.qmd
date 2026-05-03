@@ -7,4 +7,107 @@ execute:
   eval: false
 ---
 
-# Title
+# Workflow Demo: One Pipeline, Two Engines
+
+In this hands-on you will run the same 3-step analysis pipeline using two different workflow engines — **Nextflow** and **Snakemake** — and observe how each one manages execution order, caching, and re-runs.
+
+The pipeline is identical in both cases:
+
+```
+example_data.csv
+      │
+      ▼
+ 1_derive.py  (Python)  →  1_derived.csv   # mean-centre the values
+                                │
+                                ▼
+                       2_summary.R  (R)  →  2_summary.txt   # summarise the centred values
+                                                  │
+                            ┌─────────────────────┘
+                            ▼
+                      3_report.qmd  (Quarto)  →  3_report.html   # collect outputs into a report
+```
+
+You do **not** need to understand the Python or R code in detail — the focus is on the workflow layer around them.
+
+---
+
+## Nextflow
+
+**Directory:** `demo/nextflow/`
+
+The pipeline is defined in `main.nf`. Each step is a `process` block with explicit `input:` and `output:` declarations. Nextflow runs every process in an isolated subdirectory under `work/` and copies final outputs to `results/` via `publishDir`.
+
+### Running
+
+```bash
+# Build the image and start the container (first run only)
+docker compose up -d
+
+# Open a shell inside the container
+docker compose exec nextflow bash
+
+# Run the pipeline
+nextflow run main.nf
+```
+
+Results are written to `results/3_report.html`.
+
+### Re-running after a change
+
+Nextflow caches every task by content hash in `work/`. Pass `-resume` to skip unchanged steps:
+
+```bash
+nextflow run main.nf -resume
+```
+
+If you edit `2_summary.R`, only `R_SUMMARY` and `FINAL_REPORT` re-run — `PY_DERIVE` is served from cache.
+
+---
+
+## Snakemake
+
+**Directory:** `demo/snakemake/`
+
+The pipeline is defined in `Snakefile`. Each step is a `rule` block. Snakemake infers execution order by matching `output:` of one rule to `input:` of the next. Intermediate outputs go to `work/`, the final report to `results/`.
+
+### Running
+
+```bash
+# Build the image and start the container (first run only)
+docker compose up -d
+
+# Open a shell inside the container
+docker compose exec snakemake bash
+
+# Run the pipeline
+snakemake --cores 1
+```
+
+Results are written to `results/3_report.html`.
+
+### Re-running after a change
+
+Snakemake tracks file modification timestamps. Just re-run — it automatically skips steps whose outputs are newer than their inputs:
+
+```bash
+snakemake --cores 1
+```
+
+To force a specific rule to re-run regardless of timestamps:
+
+```bash
+snakemake --cores 1 --forcerun r_summary
+```
+
+---
+
+## Key differences
+
+| | Nextflow | Snakemake |
+|---|---|---|
+| Pipeline file | `main.nf` | `Snakefile` |
+| Step isolation | Each task runs in its own `work/<hash>/` subdirectory | Steps run in the project directory |
+| Intermediate outputs | Staged in `work/`, copied to `results/` via `publishDir` | Written directly to `work/` |
+| Cache mechanism | Content hashes (task inputs + code) | File modification timestamps |
+| Re-run only changed steps | `nextflow run main.nf -resume` | `snakemake --cores 1` (automatic) |
+| Force re-run one step | Not directly — delete its `work/` entry or use `-resume` after touching the script | `--forcerun <rule_name>` |

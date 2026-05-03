@@ -1,0 +1,36 @@
+---
+title: "Module 3 Demo: Final Report"
+format:
+  html:
+    toc: true
+execute:
+  eval: false
+---
+
+This report is rendered **after** the workflow completes.
+It does not execute any analysis code — it simply collects the artifacts
+produced by the earlier pipeline steps.
+
+## Raw Input Data (`example_data.csv`)
+
+```text
+
+{{< include example_data.csv >}}
+
+```
+
+## Derived Data from Python (`1_derived.csv`)
+
+```csv
+
+{{< include 1_derived.csv >}}
+
+```
+
+## Summary Statistics from R (`2_summary.txt`)
+
+```text
+
+{{< include 2_summary.txt >}}
+
+```

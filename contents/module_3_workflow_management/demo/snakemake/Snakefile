@@ -1,0 +1,42 @@
+# Minimal workshop demo pipeline:
+# 1. Python centres the values in example_data.csv  → results/1_derived.csv
+# 2. R reads 1_derived.csv and produces summary stats → results/2_summary.txt
+# 3. Quarto collects both outputs into an HTML report  → results/3_report.html
+#
+# Run with:  snakemake --cores 1
+
+rule all:
+    input:
+        "results/3_report.html"
+
+
+rule py_derive:
+    input:
+        data="example_data.csv",
+        script="1_derive.py",
+    output:
+        "work/1_derived.csv",
+    shell:
+        "python3 {input.script} --input {input.data} --output {output}"
+
+
+rule r_summary:
+    input:
+        data="work/1_derived.csv",
+        script="2_summary.R",
+    output:
+        "work/2_summary.txt",
+    shell:
+        "Rscript {input.script} --input {input.data} --output {output}"
+
+
+rule final_report:
+    input:
+        qmd="3_report.qmd",
+        data="example_data.csv",
+        derived="work/1_derived.csv",
+        summary="work/2_summary.txt",
+    output:
+        "results/3_report.html",
+    shell:
+        "quarto render {input.qmd} --to html --output-dir results/"

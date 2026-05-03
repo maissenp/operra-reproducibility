@@ -1,0 +1,113 @@
+# Module 3 Demo — Nextflow
+
+A minimal Nextflow pipeline demonstrating a reproducible multi-language workflow.
+Each step depends on the previous one's output, so Nextflow enforces execution order automatically.
+
+```
+example_data.csv
+      │
+      ▼
+ 1_derive.py  (Python)  →  1_derived.csv
+                                 │
+                                 ▼
+                         2_summary.R  (R)  →  2_summary.txt
+                                                    │
+                              ┌─────────────────────┘
+                              ▼
+                        3_report.qmd  (Quarto)  →  3_report.html
+```
+
+## Running the demo
+
+```bash
+# 1. Build the image and start the container (first run only)
+docker compose up -d
+
+# 2. Open a shell inside the container
+docker compose exec nextflow bash
+
+# 3. Run the workflow
+nextflow run main.nf
+
+# Results are published to results/
+#   results/1_derived.csv
+#   results/2_summary.txt
+#   results/3_report.html
+```
+
+Override the output directory with `--outdir`:
+
+```bash
+nextflow run main.nf --outdir my_results
+```
+
+## Resuming from a cached run
+
+Nextflow caches the result of every step in the `work/` directory.
+If you change one script and re-run with `-resume`, only that step and the
+steps downstream of it are re-executed — everything upstream is skipped.
+
+```bash
+nextflow run main.nf -resume
+```
+
+For example, if you edit `2_summary.R`:
+
+```
+ 1_derive.py  ✔ cached   (no re-run)
+ 2_summary.R  ↻ re-runs  (you changed this)
+ 3_report.qmd ↻ re-runs  (depends on 2_summary.R's output)
+```
+
+This is one of the core reproducibility benefits of a workflow manager:
+you never re-run more than necessary, and you never accidentally skip a
+step that depends on something you just changed.
+
+## Switching between PDF and HTML output
+
+The report format is controlled by the `format:` key at the top of `3_report.qmd`
+and the `--to` flag passed to Quarto in `main.nf`.
+
+**To render as HTML** (emojis and interactive features work out of the box):
+
+In `3_report.qmd`, change:
+```yaml
+format:
+  pdf:
+    toc: true
+```
+to:
+```yaml
+format:
+  html:
+    toc: true
+```
+
+And in `main.nf`, update the `FINAL_REPORT` script and output:
+```groovy
+output:
+path "3_report.html"
+
+script:
+"""
+quarto render 3_report.qmd --to html --output 3_report.html --output-dir .
+"""
+```
+
+**To render as PDF** (default, requires a LaTeX installation):
+
+Keep `format: pdf` in `3_report.qmd` and `--to pdf` in `main.nf`.
+
+> Note: emojis in section headings are silently dropped by the default PDF engine (pdflatex).
+> Switch to `pdf-engine: lualatex` in `3_report.qmd` if you need emoji support in PDFs —
+> this requires installing the `emoji` LaTeX package and an emoji font in the Docker image.
+
+## Cleaning up
+
+```bash
+# Remove Nextflow work directory and results
+rm -rf work results .nextflow .nextflow.log*
+
+# Stop and remove the container
+docker compose down
+```
