@@ -17,3 +17,7 @@ When using the `rstudio/` configuration, open the forwarded port `8787` and log 
 
 - Username: `rstudio`
 - Password: `rstudio`
+
+## Git availability
+
+The `nextflow/` and `snakemake/` configurations mount the **repo root** at `/workspace` so that `.git` is available and `git status` works even when working inside the workflow subdirectories.

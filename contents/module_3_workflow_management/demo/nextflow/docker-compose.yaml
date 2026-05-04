@@ -5,10 +5,9 @@ services:
       args:
         NEXTFLOW_TAG: "26.04.0"
     image: operra-nextflow-demo:26.04.0
-    working_dir: /workspace
+    working_dir: /workspace/contents/module_3_workflow_management/demo/nextflow
     volumes:
-      - .:/workspace
+      - ../../../..:/workspace
     # Keep the container running so people can exec into it and run nextflow.
     command: ["sh", "-lc", "sleep infinity"]
     tty: true
-
