@@ -2,6 +2,12 @@
 
 Part of the OPeR-RA project.
 
+## Open in GitHub Codespaces
+
+- Nextflow demo: [Open](https://codespaces.new/a1eksb/reproducability?quickstart=1&devcontainer_path=.devcontainer%2Fnextflow%2Fdevcontainer.json)
+- Snakemake demo: [Open](https://codespaces.new/a1eksb/reproducability?quickstart=1&devcontainer_path=.devcontainer%2Fsnakemake%2Fdevcontainer.json)
+- RStudio (project-wide): [Open](https://codespaces.new/a1eksb/reproducability?quickstart=1&devcontainer_path=.devcontainer%2Frstudio%2Fdevcontainer.json)
+
 The website for this workshop is: 
 
 ## Citation
