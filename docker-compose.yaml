@@ -9,7 +9,7 @@ services:
     ports:
       - "8787:8787"
     environment:
-      PASSWORD: rstudio
+      DISABLE_AUTH: "true"
       USER: rstudio
     volumes:
       - .:/home/rstudio/project
