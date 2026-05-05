@@ -24,6 +24,17 @@ Step 3 intentionally introduces an additional dependency (`polars`) that may not
 
 ## Running the demo
 
+### In GitHub Codespaces
+
+The environment is already set up. Open a terminal and run:
+
+```bash
+cd /home/rstudio/project/contents/module_3_workflow_management/demo/nextflow
+nextflow run main.nf
+```
+
+### On a host machine
+
 ```bash
 # 1. Build the image and start the container (first run only)
 docker compose up -d
@@ -33,13 +44,13 @@ docker compose exec nextflow bash
 
 # 3. Run the workflow
 nextflow run main.nf
-
-# Results are published to results/
-#   results/1_derived.csv
-#   results/2_summary.txt
-#   results/3_processed.csv
-#   results/4_report.html
 ```
+
+Results are published to `results/`:
+- `results/1_derived.csv`
+- `results/2_summary.txt`
+- `results/3_processed.csv`
+- `results/4_report.html`
 
 Override the output directory with `--outdir`:
 
@@ -114,7 +125,10 @@ Keep `format: pdf` in `4_report.qmd` and `--to pdf` in `main.nf`.
 ```bash
 # Remove Nextflow work directory and results
 rm -rf work results .nextflow .nextflow.log*
+```
 
-# Stop and remove the container
+On a host machine, also stop the container:
+
+```bash
 docker compose down
 ```

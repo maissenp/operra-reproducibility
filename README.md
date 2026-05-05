@@ -4,9 +4,7 @@ Part of the OPeR-RA project.
 
 ## Open in GitHub Codespaces
 
-- 🧬 <a href="https://codespaces.new/a1eksb/reproducability?quickstart=1&devcontainer_path=.devcontainer%2Fnextflow%2Fdevcontainer.json" target="_blank" rel="noopener noreferrer">Nextflow demo</a> — Run the 4-step workshop pipeline with Nextflow inside a dedicated dev container.
-- 🐍 <a href="https://codespaces.new/a1eksb/reproducability?quickstart=1&devcontainer_path=.devcontainer%2Fsnakemake%2Fdevcontainer.json" target="_blank" rel="noopener noreferrer">Snakemake demo</a> — Run the same pipeline with Snakemake to compare execution, caching, and reruns.
-- 📊 <a href="https://codespaces.new/a1eksb/reproducability?quickstart=1&devcontainer_path=.devcontainer%2Frstudio%2Fdevcontainer.json" target="_blank" rel="noopener noreferrer">RStudio (project-wide)</a> — Open RStudio Server for the whole project (port 8787) and work from the browser.
+<a href="https://codespaces.new/a1eksb/reproducability?quickstart=1&devcontainer_path=.devcontainer%2Frstudio%2Fdevcontainer.json" target="_blank" rel="noopener noreferrer">Open in RStudio Server</a> — Opens RStudio Server for the whole project (port 8787) in your browser.
 
 The website for this workshop is: 
 

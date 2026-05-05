@@ -24,6 +24,17 @@ Step 3 intentionally introduces an additional dependency (`polars`) that may not
 
 ## Running the demo
 
+### In GitHub Codespaces
+
+The environment is already set up. Open a terminal and run:
+
+```bash
+cd /home/rstudio/project/contents/module_3_workflow_management/demo/snakemake
+snakemake --cores 1
+```
+
+### On a host machine
+
 ```bash
 # 1. Build the image and start the container (first run only)
 docker compose up -d
@@ -33,17 +44,17 @@ docker compose exec snakemake bash
 
 # 3. Run the workflow
 snakemake --cores 1
-
-# Results are published to results/
-#   results/4_report.html
 ```
+
+Results are published to `results/`:
+- `results/4_report.html`
 
 If you run `snakemake` from outside `demo/snakemake/`, pass an explicit working directory and Snakefile:
 
 ```bash
 snakemake \
-  --directory /workspace/contents/module_3_workflow_management/demo/snakemake \
-  --snakefile /workspace/contents/module_3_workflow_management/demo/snakemake/Snakefile \
+  --directory /home/rstudio/project/contents/module_3_workflow_management/demo/snakemake \
+  --snakefile /home/rstudio/project/contents/module_3_workflow_management/demo/snakemake/Snakefile \
   --cores 1
 ```
 
@@ -83,7 +94,10 @@ snakemake --cores 1 --forceall
 ```bash
 # Remove outputs and Snakemake metadata
 rm -rf work results .snakemake
+```
 
-# Stop and remove the container
+On a host machine, also stop the container:
+
+```bash
 docker compose down
 ```
