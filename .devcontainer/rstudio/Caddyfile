@@ -1,7 +1,8 @@
 :8080 {
     reverse_proxy pyverse:8787 {
-        header_up Host {host}
-        header_up X-Forwarded-Host {host}
-        header_up X-Forwarded-Proto {scheme}
+        header_up Host {env.CODESPACE_NAME}-8080.{env.GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN}
+        header_up X-Forwarded-Host {env.CODESPACE_NAME}-8080.{env.GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN}
+        header_up X-Forwarded-Proto https
+        header_up X-Forwarded-Port 443
     }
 }

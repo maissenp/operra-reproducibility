@@ -2,12 +2,14 @@ services:
   pyverse:
     image: ghcr.io/a1eksb/reproducability:rstudio
     build: !reset null
-
   caddy:
     image: caddy:2-alpine
     restart: unless-stopped
     ports:
       - "8080:8080"
+    environment:
+      CODESPACE_NAME: ${CODESPACE_NAME}
+      GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN: ${GITHUB_CODESPACES_PORT_FORWARDING_DOMAIN}
     volumes:
       - .devcontainer/rstudio/Caddyfile:/etc/caddy/Caddyfile:ro
     depends_on:
