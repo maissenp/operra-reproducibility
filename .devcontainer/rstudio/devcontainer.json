@@ -7,13 +7,15 @@
   "service": "pyverse",
   "workspaceFolder": "/home/rstudio/project",
   "shutdownAction": "stopCompose",
-  "postStartCommand": "bash -c 'until curl -sf http://localhost:8787 >/dev/null 2>&1; do sleep 2; done'",
+  "postStartCommand": "bash -c 'until curl -sf http://localhost:8787 >/dev/null 2>&1; do sleep 2; done && sleep 3'",
   "waitFor": "postStartCommand",
   "forwardPorts": [8787],
   "portsAttributes": {
     "8787": {
       "label": "RStudio Server",
-      "onAutoForward": "openBrowser"
+      "onAutoForward": "openBrowser",
+      "visibility": "private",
+      "protocol": "http"
     }
   },
   "customizations": {

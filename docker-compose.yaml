@@ -2,10 +2,11 @@ version: "3.9"
 
 services:
   pyverse:
-    image: ghcr.io/a1eksb/reproducability:rstudio
+    build: .
+    platform: linux/amd64
     container_name: pyverse
     ports:
-      - "8787:8787"
+      - "127.0.0.1:8787:8787"
     environment:
       DISABLE_AUTH: "true"
       USER: rstudio
