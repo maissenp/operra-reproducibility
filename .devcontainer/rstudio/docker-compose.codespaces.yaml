@@ -9,6 +9,6 @@ services:
     ports:
       - "8080:8080"
     volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - .devcontainer/rstudio/Caddyfile:/etc/caddy/Caddyfile:ro
     depends_on:
       - pyverse
