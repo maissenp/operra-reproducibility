@@ -12,8 +12,8 @@
   "forwardPorts": [8787],
   "portsAttributes": {
     "8787": {
-      "label": "RStudio Server",
-      "onAutoForward": "openBrowser",
+      "label": "RStudio",
+      "onAutoForward": "notify",
       "visibility": "private",
       "protocol": "http"
     }
