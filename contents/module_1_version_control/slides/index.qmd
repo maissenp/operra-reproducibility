@@ -42,11 +42,44 @@ nocite: |
 -   How to **collaborate** without overwriting each other's work?
 -   How to **go back** to a working state after something breaks?
 -   How to know **who changed what and when**?
-
-. . .
-
-**Solution: Git**
 :::
+
+::: {.fragment}
+ . . . 
+:::
+
+::: {.fragment}
+Solution: **Version control with Git** 
+:::
+
+------------------------------------------------------------------------
+
+## "Platform" version control
+
+::: incremental
+
+- MS Word, Google Docs, etc.
+- Require a master document
+- Often scales poorly (to only a few participants)
+- Availablility of complete history questionable
+- Stored in some company's cloud
+- Works only for specific, often proprietary file types
+
+:::
+
+------------------------------------------------------------------------
+
+## Version control systems
+
+::::::: columns
+:::: {.column width="50%"}
+![](img/centralized.png){fig-align="center" width="70%"}
+::::
+
+:::: {.column width="50%"}
+![](img/distributed.png){fig-align="center" width="80%"}
+::::
+:::::::
 
 ------------------------------------------------------------------------
 
@@ -80,11 +113,10 @@ nocite: |
 
 ![@Turing2024](img/git-turing-way.png){fig-align="center" width="500"}
 
-::: fragment
-![[<https://commons.wikimedia.org/wiki/File:Git_operations.svg>]{style="font-size:0.7em"}](img/Git_operations.png)
-:::
 ::::
 :::::::
+
+
 
 ------------------------------------------------------------------------
 
@@ -94,13 +126,21 @@ nocite: |
 |---|---|
 | **Repository** | A directory tracked by Git (`.git/` folder inside) |
 | **Commit** | A snapshot of changes, with a message and timestamp |
-| **Branch** | An independent line of development |
-| **Merge** | Combining changes from two branches |
 | **Remote** | A version of the repo hosted on a server (GitHub/GitLab) |
 | **Clone** | Copying a remote repo locally |
+| **Fork** | Creating an independent copy remotely |
 | **Push / Pull** | Sending / fetching commits to/from a remote |
+| **Branch** | An independent line of development |
+| **Merge** | Combining changes from two branches |
 
 ------------------------------------------------------------------------
+
+## Common Git operations
+
+![[<https://commons.wikimedia.org/wiki/File:Git_operations.svg>]{style="font-size:0.7em"}](img/Git_operations.png){fig-align="center" }
+
+------------------------------------------------------------------------
+
 
 ## Basic Git workflow
 
@@ -121,6 +161,22 @@ git commit -m "Add introduction section"
 git remote add origin https://github.com/yourname/yourrepo.git
 git push -u origin main
 ```
+
+------------------------------------------------------------------------
+
+## Git for reproducible research
+
+::: incremental
+-   Every commit is a **citable point in time** — link a paper to a specific commit
+
+-   Combine with a **data repository** (e.g., Zenodo) to obtain a DOI for a release
+
+-   Platforms like GitHub and GitLab offer **issue tracking**, **code review**, and **CI/CD**
+
+-   `.gitignore` keeps large or sensitive files out of the repository
+
+-   Good commit messages serve as a **lab notebook**
+:::
 
 ------------------------------------------------------------------------
 
@@ -145,32 +201,18 @@ Branches are cheap and encourage **experimentation without risk**.
 
 ------------------------------------------------------------------------
 
-## Git for reproducible research
-
-::: incremental
--   Every commit is a **citable point in time** — link a paper to a specific commit
-
--   Combine with a **data repository** (e.g., Zenodo) to obtain a DOI for a release
-
--   Platforms like GitHub and GitLab offer **issue tracking**, **code review**, and **CI/CD**
-
--   `.gitignore` keeps large/sensitive files out of the repository
-
--   Good commit messages serve as a **lab notebook**
-:::
-
-------------------------------------------------------------------------
-
 ## Tips for a clean Git history
 
 ::: incremental
 -   Commit **often** and in **logical units** — one concept per commit
 
--   Write **informative commit messages** (imperative mood: "Add figure 3", not "stuff")
+-   Write **informative commit messages** ("Add figure 3", not "update manuscript")
 
--   Use a `.gitignore` to exclude generated files, large data, credentials
+-   Avoid tracking large data, generated files, and credentials — **use `.gitignore`**
 
 -   Prefer **topic branches** over committing directly to `main`
+
+-   Include an explanatory **`README.md` file**
 
 -   Tag **releases** that correspond to paper submissions or milestones
 :::
