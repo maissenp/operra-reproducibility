@@ -26,7 +26,7 @@ Requirements:
 - [Git](https://git-scm.com/install/) installed
 - [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/) installed
 
-## Option 3: Work locally "fully by hand"
+## Option 3: Work locally "by hand"
 
 Requirements:
 
