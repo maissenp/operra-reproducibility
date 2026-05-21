@@ -1,6 +1,6 @@
 
 ---
-title: Bonus slides
+title: "Bonus Slides Dynamic Reporting"
 date: today
 date-format: long
 author:

@@ -47,10 +47,14 @@ nocite: |
 -   "Works on my machine" 😅
 
 -   Journals increasingly require **computational reproducibility**
+:::
 
+::: {.fragment}
 . . .
+:::
 
-**Solution: software containers (e.g., Docker)**
+::: {.fragment}
+**One solution: software containers (e.g., Docker)**
 :::
 
 ------------------------------------------------------------------------
@@ -65,7 +69,7 @@ nocite: |
 -   Computational environment components:
 
     -   Operating system
-    -   R and R packages
+    -   R and R packages / Python and Python libraries
     -   Numerical software libraries (e.g., LAPACK, BLAS)
     -   other software (e.g., LaTeX, Java)
 
@@ -168,34 +172,17 @@ Rocker images available at <https://rocker-project.org/>:
 
 ------------------------------------------------------------------------
 
-## Putting it all together
 
-:::::: columns
-::: {.column width="55%"}
-![Modified from @Peikert2021](img/workflow-quarto.png)
-:::
+## Workflows for using containers in data analysis
 
-:::: {.column width="45%"}
-::: fragment
-Terminal
+**Post-hoc containerization:**
 
-``` {.bash style="font-size:0.85em"}
-# clone git repository
-git clone git@gitlab.uzh.ch:crsuzh/zurich-names.git
+![](img/post-hoc-containerization.png){fig-align="center" height="200"}
 
-# enter project repository
-cd zurich-names
+**A priori containerization:**
 
-# run automated analyses inside Docker
-make docker-report
-```
+![](img/a-priori-containerization.png){fig-align="center" height="200"}
 
-→ `report.html`
-
-[https://gitlab.uzh.ch/crsuzh/zurich-names](https://gitlab.uzh.ch/crsuzh/zurich-names){style="font-size:0.65em"}
-:::
-::::
-::::::
 
 ------------------------------------------------------------------------
 
