@@ -59,6 +59,12 @@ nocite: |
 
 ------------------------------------------------------------------------
 
+## Computational reproducibility
+
+![Inspired by @peng2011 and @Peikert2021](img/comp-repro-spectrum.png)
+
+------------------------------------------------------------------------
+
 ## Containerization with Docker
 
 ::::::: columns
