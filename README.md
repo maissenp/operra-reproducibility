@@ -1,6 +1,6 @@
 # SwissRN Workshop on Computational Reproducibility
 
-Part of the OPeR-RA workshop series.
+Part of the OPeR-RA workshop series. This is Patricia's repo.
 
 The website for this workshop is: <https://crsuzh.pages.uzh.ch/operra-reproducibility>
 
