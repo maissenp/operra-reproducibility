@@ -20,3 +20,4 @@ _freeze/
 .snakemake/
 **/demo/*/work/
 **/demo/*/results/
+.positai
