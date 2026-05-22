@@ -5,6 +5,7 @@ RUN install2.r kableExtra && \
     python3-pip \
     python3-venv \
     openjdk-21-jre-headless \
+    graphviz \
     && apt-get clean && rm -rf /var/lib/apt/lists/*
 
 COPY requirements.txt .

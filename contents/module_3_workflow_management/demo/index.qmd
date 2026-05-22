@@ -74,6 +74,23 @@ nextflow run main.nf -resume
 
 If you edit `2_summary.R`, only `R_SUMMARY` and `FINAL_REPORT` re-run — `PY_DERIVE` is served from cache.
 
+### Visualise the pipeline
+
+Nextflow can emit a DAG and an execution report alongside the run:
+
+```bash
+nextflow run main.nf \
+  -with-dag flowchart.svg \
+  -with-report report.html \
+  -with-timeline timeline.html
+```
+
+- `flowchart.svg` — the workflow DAG (needs Graphviz / `dot`)
+- `report.html` — per-task runtime, memory, and CPU usage
+- `timeline.html` — Gantt-style view of when each task ran
+
+Open the `.html` files in your browser.
+
 ---
 
 ## Snakemake
@@ -125,6 +142,26 @@ To force a specific rule to re-run regardless of timestamps:
 ```bash
 snakemake --cores 1 --forcerun r_summary
 ```
+
+### Visualise the pipeline
+
+Snakemake can emit the dependency graph as Graphviz `dot` format and an HTML execution report after a run:
+
+```bash
+# Rule-level DAG (one node per rule)
+snakemake --rulegraph | dot -Tsvg > rulegraph.svg
+
+# Full job DAG (one node per executed job, useful when wildcards fan out)
+snakemake --dag | dot -Tsvg > dag.svg
+
+# HTML report — run the pipeline first, then ask for the report
+snakemake --cores 1
+snakemake --report report.html
+```
+
+Open `rulegraph.svg`, `dag.svg`, or `report.html` in your browser. The report includes per-rule runtime, the DAG coloured by status, and any outputs annotated with `report()` in the Snakefile.
+
+> Requires Graphviz (`dot`). The workshop image installs it for you.
 
 ---
 
